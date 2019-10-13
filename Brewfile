@@ -4,9 +4,9 @@ tap "homebrew/cask"
 tap "homebrew/core"
 brew "cowsay"
 brew "postgresql"
+brew "mas"
 brew "yarn"
 brew "zsh-syntax-highlighting"
-cask "fork"
 cask "google-chrome"
 cask "mailplane"
 cask "rocket"
@@ -19,3 +19,6 @@ cask "vlc"
 cask "zoomus"
 cask "caskroom/fonts/font-cascadia"
 cask "caskroom/fonts/font-hack"
+
+# Mac App Store
+mas 'Things', id: 904280696
