@@ -25,8 +25,12 @@ npm install --global yarn pure-prompt
 mkdir $HOME/Repos
 
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
-rm -rf $HOME/.zshrc
-ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
+# rm -rf $HOME/.zshrc
+# ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
+# TODO: .zshrc aliases
+# TODO: .zshrc
+# TODO: .profile
+# TODO: code
 
 # Set macOS preferences
 # We will run this last because this will reload the shell
