@@ -3,11 +3,11 @@
 echo "Setting up your Mac..."
 
 # Install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Check for Homebrew and install if we don't have it
 if test ! $(which brew); then
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
 # Update Homebrew recipes
@@ -17,11 +17,11 @@ brew update
 brew tap homebrew/bundle
 brew bundle
 
-# Make ZSH the default shell environment (not needed for macOS Catalina)
-# chsh -s $(which zsh)
+# Install Node via NVM
+nvm install node
 
 # Install global NPM packages
-npm install --global pure-prompt
+yarn global add create-next-app netlify-cli yalc yo
 
 # Create a Repos directory
 # This is a default directory for git repositories

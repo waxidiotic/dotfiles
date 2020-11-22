@@ -1,11 +1,25 @@
 # This is Git's per-user configuration file.
 [user]
-	name = Alex Bussey
-	email = abussey@jwplayer.com
+	name 				 = Alex Bussey
+	email 			 = abussey@jwplayer.com
+[github]
+	user				 = waxidiotic
 [core]
 	excludesfile = /Users/alexbussey/.gitignore_global
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+[alias]
+  a      			 = add
+  ca     			 = commit -a
+  cam    			 = commit -am
+  cm     			 = commit -m
+  s      			 = status
+  pom    			 = push origin master
+  pog    			 = push origin gh-pages
+  puom   			 = pull origin master
+  puog   			 = pull origin gh-pages
+  cob    			 = checkout -b
+  co     			 = checkout
+  fp     			 = fetch --prune --all
+  l      			 = log --oneline --decorate --graph
+  lall   			 = log --oneline --decorate --graph --all
+  ls     			 = log --oneline --decorate --graph --stat
+  lt     			 = log --graph --decorate 
