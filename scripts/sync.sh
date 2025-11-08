@@ -31,8 +31,8 @@ show_direction_menu() {
 # Function to display available files menu
 show_file_menu() {
     local direction="$1"
+    shift  # Remove first argument (direction)
     local files=("$@")
-    files=("${files[@]:1}") # Remove first argument (direction)
     
     echo ""
     if [[ "$direction" == "to_cursor" ]]; then
@@ -42,10 +42,12 @@ show_file_menu() {
     fi
     
     local i=1
-    for file in "${files[@]}"; do
-        echo "  $i) $file"
-        ((i++))
-    done
+    if [[ ${#files[@]} -gt 0 ]]; then
+        for file in "${files[@]}"; do
+            echo "  $i) $file"
+            ((i++))
+        done
+    fi
     echo "  $i) All files"
     echo ""
 }
@@ -198,7 +200,11 @@ main() {
     fi
     
     # Get available files for selected direction
-    read -a available_files <<< "$(get_available_files "$direction")"
+    local available_files_str="$(get_available_files "$direction")"
+    local available_files=()
+    if [[ -n "$available_files_str" ]]; then
+        read -a available_files <<< "$available_files_str"
+    fi
     
     if [[ ${#available_files[@]} -eq 0 ]]; then
         if [[ "$direction" == "to_cursor" ]]; then
