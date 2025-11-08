@@ -6,11 +6,24 @@ set -euo pipefail
 # Get the repository root directory (parent of scripts/)
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-# File mappings: repo_file -> cursor_path
-declare -A FILE_MAPPINGS=(
-    ["settings.json"]="$HOME/Library/Application Support/Cursor/User/settings.json"
-    ["extensions.json"]="$HOME/.cursor/extensions/extensions.json"
-)
+# Function to get Cursor path for a repo file
+get_cursor_path() {
+    local repo_file="$1"
+    case "$repo_file" in
+        "settings.json")
+            echo "$HOME/Library/Application Support/Cursor/User/settings.json"
+            ;;
+        "extensions.json")
+            echo "$HOME/.cursor/extensions/extensions.json"
+            ;;
+        *)
+            echo ""
+            ;;
+    esac
+}
+
+# List of files to sync
+FILES=("settings.json" "extensions.json")
 
 # Colors for output
 RED='\033[0;31m'
@@ -74,7 +87,12 @@ get_date_string() {
 # Function to sync FROM repository TO Cursor
 sync_to_cursor() {
     local source_file="$1"
-    local dest_path="${FILE_MAPPINGS[$source_file]}"
+    local dest_path="$(get_cursor_path "$source_file")"
+    
+    if [[ -z "$dest_path" ]]; then
+        echo -e "${RED}Error: Unknown file: $source_file${NC}" >&2
+        return 1
+    fi
     
     # Check if source file exists in repo
     if [[ ! -f "$REPO_ROOT/$source_file" ]]; then
@@ -109,8 +127,13 @@ sync_to_cursor() {
 # Function to sync FROM Cursor TO repository
 sync_from_cursor() {
     local dest_file="$1"
-    local source_path="${FILE_MAPPINGS[$dest_file]}"
+    local source_path="$(get_cursor_path "$dest_file")"
     local dest_path="$REPO_ROOT/$dest_file"
+    
+    if [[ -z "$source_path" ]]; then
+        echo -e "${RED}Error: Unknown file: $dest_file${NC}" >&2
+        return 1
+    fi
     
     # Check if source file exists in Cursor directory
     if [[ ! -f "$source_path" ]]; then
@@ -159,7 +182,7 @@ get_available_files() {
     local direction="$1"
     local files=()
     
-    for file in "${!FILE_MAPPINGS[@]}"; do
+    for file in "${FILES[@]}"; do
         if [[ "$direction" == "to_cursor" ]]; then
             # Check if file exists in repo
             if [[ -f "$REPO_ROOT/$file" ]]; then
@@ -167,7 +190,8 @@ get_available_files() {
             fi
         else
             # Check if file exists in Cursor directory
-            if [[ -f "${FILE_MAPPINGS[$file]}" ]]; then
+            local cursor_path="$(get_cursor_path "$file")"
+            if [[ -n "$cursor_path" ]] && [[ -f "$cursor_path" ]]; then
                 files+=("$file")
             fi
         fi
