@@ -2,9 +2,40 @@
     "window.commandCenter": true,
     "workbench.colorCustomizations": {},
     "editor.fontFamily": "'Monaspace Argon', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 14,
     "editor.inlayHints.fontFamily": "'Monaspace Radon'",
     "editor.inlineSuggest.fontFamily": "'Monaspace Radon'",
     "editor.fontLigatures": "'calt', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09', 'ss10', 'liga'",
     "workbench.colorTheme": "Catppuccin Mocha",
-    "workbench.iconTheme": "catppuccin-mocha"
+    "workbench.iconTheme": "catppuccin-mocha",
+    "redhat.telemetry.enabled": false,
+    "totalTypeScript.hideAllTips": true,
+    "totalTypeScript.hideBasicTips": true,
+    // Work only
+    "claudeCode.environmentVariables": [
+        {
+            "name": "ANTHROPIC_MODEL",
+            "value": "us.anthropic.claude-sonnet-4-5-20250929-v1:0"
+        },
+        {
+            "name": "ANTHROPIC_SMALL_FAST_MODEL",
+            "value": "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+        },
+        {
+            "name": "AWS_REGION",
+            "value": "us-west-2"
+        },
+        {
+            "name": "AWS_PROFILE",
+            "value": "corpdev-claude"
+        },
+        {
+            "name": "CLAUDE_CODE_USE_BEDROCK",
+            "value": "1"
+        },
+    ],
+    "files.associations": {
+        "*.hamlc": "haml"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
