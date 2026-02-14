@@ -1,0 +1,5 @@
+{
+  "ghostty": "~/Library/Application Support/com.mitchellh.ghostty/config",
+  "zed": "~/.config/zed/settings.json",
+  "zsh": "~/.zshrc"
+}

@@ -1,0 +1,62 @@
+{
+	"agent_servers": {
+		"claude": {
+			"default_model": "sonnet",
+			"favorite_models": ["sonnet"],
+			"default_config_options": {},
+			"favorite_config_option_values": {}
+		}
+	},
+	"base_keymap": "VSCode",
+	"buffer_font_fallbacks": [
+		"Menlo",
+		"Monaco",
+		"Courier New",
+		"Monaspace Krypton"
+	],
+	"buffer_font_family": "Monaspace Argon",
+	"buffer_font_size": 14.0,
+	"icon_theme": "Catppuccin Mocha",
+	"languages": {
+		"CSS": {
+			"language_servers": ["tailwindcss-intellisense-css"],
+			"formatter": { "language_server": { "name": "biome" } }
+		},
+		"JavaScript": {
+			"formatter": { "language_server": { "name": "biome" } },
+			"code_actions_on_format": {
+				"source.fixAll.biome": true,
+				"source.organizeImports.biome": true
+			}
+		},
+		"JSON": { "formatter": { "language_server": { "name": "biome" } } },
+		"JSONC": { "formatter": { "language_server": { "name": "biome" } } },
+		"TSX": {
+			"formatter": { "language_server": { "name": "biome" } },
+			"code_actions_on_format": {
+				"source.fixAll.biome": true,
+				"source.organizeImports.biome": true
+			}
+		},
+		"TypeScript": {
+			"formatter": { "language_server": { "name": "biome" } },
+			"code_actions_on_format": {
+				"source.fixAll.biome": true,
+				"source.organizeImports.biome": true
+			}
+		}
+	},
+	"lsp": { "biome": { "settings": { "require_config_file": true } } },
+	"terminal": {
+		"shell": "system",
+		"font_size": 14.0,
+		"font_family": "Monaspace Argon",
+		"font_fallbacks": ["Menlo", "Monaco", "Courier New", "Monaspace Krypton"]
+	},
+	"theme": {
+		"mode": "dark",
+		"light": "Catppuccin Latte",
+		"dark": "Catppuccin Mocha"
+	},
+	"ui_font_size": 18
+}
